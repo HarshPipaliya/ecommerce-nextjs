@@ -1,5 +1,8 @@
 "use client";
-import { Navbar } from "@components/header/navbar";
+
+import { Navbar } from "@/components/header/navbar";
+import { ThemeType } from "@/enums/theme.enum";
+import cn from "@/helper/cn";
 import { parseCookies, setCookie } from "nookies";
 import React, { ReactNode, useEffect, useState } from "react";
 
@@ -8,22 +11,30 @@ interface ThemeWrapperProps {
 }
 
 const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState<string>(ThemeType.LIGHT);
 
   useEffect(() => {
     const cookies = parseCookies();
-    cookies.theme === "light" && setTheme("dark");
+    cookies.theme === ThemeType.LIGHT && setTheme(ThemeType.DARK);
   }, []);
 
   return (
-    <div className={theme}>
-      <Navbar
+    <div
+      className={cn(
+        theme,
+        theme === "dark" ? "bg-[#191a1c]" : "",
+        "w-full h-full overflow-x-hidden overflow-y-auto"
+      )}
+    >
+      {/* <Navbar
         toggleTheme={() => {
-          setTheme(theme === "light" ? "dark" : "light");
+          setTheme(
+            theme === ThemeType.LIGHT ? ThemeType.DARK : ThemeType.LIGHT
+          );
           setCookie(null, "theme", theme);
         }}
         theme={theme}
-      />
+      /> */}
       {children}
     </div>
   );
