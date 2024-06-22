@@ -1,25 +1,59 @@
 import * as yup from "yup";
 
-export enum SellerSignup {
+export enum SellerSignupInputs {
+  // Personal Info.
   FIRSTNAME = "first_name",
   LASTNAME = "last_name",
-  MOBINE_NUMBER = "mobile_number",
+  MOBILE = "mobile",
   EMAIL = "email",
+
+  // Business Info.
+  BUSINESS_NAME = "business_name",
+  BUSINESS_TYPE = "business_type",
+
+  // Passwords and Security
   PASSWORD = "password",
 }
 
-export const sellerSignupSchema = yup.object({
-  [SellerSignup.FIRSTNAME]: yup.string().required(),
-  [SellerSignup.LASTNAME]: yup.string().required(),
-  [SellerSignup.MOBINE_NUMBER]: yup.string().required(),
-  [SellerSignup.EMAIL]: yup.string().required(),
-  [SellerSignup.PASSWORD]: yup.string().required(),
-});
+// export const sellerSignupSchema = yup.object({
+//   [SellerSignupInputs.FIRSTNAME]: yup.string().required("Enter firstname"),
+//   [SellerSignupInputs.LASTNAME]: yup.string().required("Enter lastname"),
+//   [SellerSignupInputs.MOBILE]: yup.string().required("Enter mobile number"),
+//   [SellerSignupInputs.EMAIL]: yup.string().required("Enter email"),
+//   [SellerSignupInputs.BUSINESS_NAME]: yup
+//     .string()
+//     .required("Enter bussiness name"),
+//   [SellerSignupInputs.BUSINESS_TYPE]: yup
+//     .string()
+//     .required("Please select business type"),
+//   [SellerSignupInputs.PASSWORD]: yup.string().required("Enter password"),
+// });
+export const sellerSignupSchema = [
+  yup.object({
+    [SellerSignupInputs.FIRSTNAME]: yup.string().required("Enter firstname"),
+    [SellerSignupInputs.LASTNAME]: yup.string().required("Enter lastname"),
+    [SellerSignupInputs.MOBILE]: yup.string().required("Enter mobile number"),
+    [SellerSignupInputs.EMAIL]: yup.string().required("Enter email"),
+  }),
+  yup.object({
+    [SellerSignupInputs.BUSINESS_NAME]: yup
+      .string()
+      .required("Enter bussiness name"),
+    [SellerSignupInputs.BUSINESS_TYPE]: yup
+      .string()
+      .required("Please select business type"),
+  }),
+  yup.object({
+    [SellerSignupInputs.PASSWORD]: yup.string().required("Enter password"),
+  }),
+];
 
-export interface ISellerSignupForm {
-  [SellerSignup.FIRSTNAME]: string;
-  [SellerSignup.LASTNAME]: string;
-  [SellerSignup.MOBINE_NUMBER]: string;
-  [SellerSignup.EMAIL]: string;
-  [SellerSignup.PASSWORD]: string;
+export interface ISellerSignupInputs {
+  [SellerSignupInputs.FIRSTNAME]: string;
+  [SellerSignupInputs.LASTNAME]: string;
+  [SellerSignupInputs.MOBILE]: string;
+  [SellerSignupInputs.EMAIL]: string;
+  [SellerSignupInputs.BUSINESS_NAME]: string;
+  [SellerSignupInputs.BUSINESS_TYPE]: string;
+  [SellerSignupInputs.PASSWORD]: string;
 }

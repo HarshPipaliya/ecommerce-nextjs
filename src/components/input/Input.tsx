@@ -32,7 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
         {label && (
           <label
             className={cn(
-              "block mb-2 text-sm font-medium text-gray-900 dark:text-white",
+              "block mb-1 text-sm font-medium text-gray-900 dark:text-white",
               labelClassname
             )}
           >
@@ -42,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
         <input
           type={type}
           className={cn(
-            `bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500 ${
+            `bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500 ${
               error && "!border-red-500"
             } ${fullWidth && "!w-full"}`,
             className
@@ -51,7 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
           {...rest}
         />
         {helperText && (
-          <p className={cn("text-red-600 text-sm mt-2", helperClassname)}>
+          <p className={cn("text-red-600 text-sm mt-1", helperClassname)}>
             {helperText}
           </p>
         )}
@@ -59,5 +59,7 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
     );
   }
 );
+
+Input.displayName = "Input";
 
 export default Input;

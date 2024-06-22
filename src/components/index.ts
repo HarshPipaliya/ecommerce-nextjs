@@ -1,2 +1,4 @@
-export * from "./input";
-export * from "./button";
+export * from "./Input";
+export * from "./Button";
+export * from "./Select";
+export * from "./themeWrapper";

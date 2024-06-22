@@ -24,11 +24,11 @@ const Button = React.forwardRef<HTMLButtonElement, IProps>(
     return (
       <button
         className={cn(
-          `text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 flex items-center justify-center gap-1 ${
+          `border border-blue-800 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 flex items-center justify-center gap-1 ${
             fullWidth && "!w-full"
           } ${
             variant === "outlined" &&
-            "text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            "bg-transparent hover:bg-transparent !text-blue-800 border border-blue-800"
           } ${
             color === "error" &&
             "bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
@@ -52,5 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, IProps>(
     );
   }
 );
+
+Button.displayName = "Button";
 
 export default Button;
