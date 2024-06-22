@@ -42,7 +42,7 @@ const LoginForm = () => {
           helperText={errors[LoginInputs.PASSWORD]?.message}
         />
         <p className="text-xs">
-          Don't have an account?{" "}
+          Don't have an account?
           <Link href={"/signup"} className="text-blue-600">
             Signup
           </Link>
