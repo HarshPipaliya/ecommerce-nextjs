@@ -1,8 +1,6 @@
-import { ThemeWrapper } from "@/components/themeWrapper";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import cn from "@/helper/cn";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -21,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(inter.className, "w-[100vw] h-[100vh] overflow-hidden")}
-      >
-        <ThemeWrapper>{children}</ThemeWrapper>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
