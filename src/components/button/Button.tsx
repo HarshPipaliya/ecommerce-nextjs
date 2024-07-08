@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, IProps>(
         ref={ref}
         {...rest}
       >
-        {children}
+        {loading ? <p>Loading...</p> : children}
       </button>
     );
   }

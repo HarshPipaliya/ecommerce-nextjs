@@ -9,8 +9,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   ISellerSignupInputs,
+  SellerSignupInputs,
   sellerSignupSchema,
 } from "@/shared/seller-signup/const";
+import axios from "axios";
 
 const SellerSignupForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -33,8 +35,18 @@ const SellerSignupForm = () => {
     };
   }, [currentStep, setCurrentStep, methods]);
 
-  const onSubmit = (values: ISellerSignupInputs) => {
-    console.log({ values });
+  const onSubmit = async (values: ISellerSignupInputs) => {
+    const res = await axios.post("/api/signup", {
+      firstName: values?.[SellerSignupInputs.FIRSTNAME],
+      lastName: values?.[SellerSignupInputs.LASTNAME],
+      phoneNumber: values?.[SellerSignupInputs.MOBILE],
+      email: values?.[SellerSignupInputs.EMAIL],
+      businessName: values?.[SellerSignupInputs.BUSINESS_NAME],
+      businessType: values?.[SellerSignupInputs.BUSINESS_TYPE],
+      role: "Seller",
+      password: values?.[SellerSignupInputs.PASSWORD],
+    });
+    console.log({ res });
   };
 
   return (

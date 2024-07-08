@@ -1,10 +1,11 @@
 "use client";
 
-import { Navbar } from "@/components/header/navbar";
+import { CookieItemsKeys } from "@/constants/cookies.const";
 import { ThemeType } from "@/enums/theme.enum";
 import cn from "@/helper/cn";
-import { parseCookies, setCookie } from "nookies";
+import { getCookie, setCookie } from "@/helper/cookies";
 import React, { ReactNode, useEffect, useState } from "react";
+import { BiMoon, BiSun } from "react-icons/bi";
 
 interface ThemeWrapperProps {
   children: ReactNode;
@@ -14,9 +15,14 @@ const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>(ThemeType.LIGHT);
 
   useEffect(() => {
-    const cookies = parseCookies();
-    cookies.theme === ThemeType.LIGHT && setTheme(ThemeType.DARK);
+    getCookie(CookieItemsKeys.THEME) === ThemeType.LIGHT &&
+      setTheme(ThemeType.DARK);
   }, []);
+
+  const handleToggleTheme = () => {
+    setTheme(theme === ThemeType.LIGHT ? ThemeType.DARK : ThemeType.LIGHT);
+    setCookie(CookieItemsKeys.THEME, theme);
+  };
 
   return (
     <div
@@ -36,6 +42,16 @@ const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
         theme={theme}
       /> */}
       {children}
+      <button
+        className="fixed bottom-5 right-5 w-[50px] h-[50px] text-white rounded-full flex items-center justify-center bg-blue-400"
+        onClick={handleToggleTheme}
+      >
+        {theme === ThemeType.DARK ? (
+          <BiMoon fontSize={30} />
+        ) : (
+          <BiSun fontSize={30} />
+        )}
+      </button>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
         <input
           type={type}
           className={cn(
-            `bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500 ${
+            `border border-gray-300 text-sm rounded-lg focus:border-blue-500 block p-2.5  ${
               error && "!border-red-500"
             } ${fullWidth && "!w-full"}`,
             className
